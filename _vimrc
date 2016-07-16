@@ -57,6 +57,27 @@ function MyDiff()
   endif
 endfunction
 
+" For status line
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guibg=magenta
+  elseif a:mode == 'r'
+    hi statusline guibg=blue
+  else
+    hi statusline guibg=red
+  endif
+endfunction
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=green
+
+" default the statusline to green when entering Vim
+hi statusline guibg=green
+set laststatus=2
+
+
+" Personal setting
 set shiftwidth=4
 set tabstop=4
 set expandtab

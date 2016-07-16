@@ -1,1 +1,1 @@
-personal vim settings
+my vim settings
