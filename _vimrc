@@ -76,7 +76,6 @@ au InsertLeave * hi statusline guibg=green
 hi statusline guibg=green
 set laststatus=2
 
-
 " Personal setting
 set shiftwidth=4
 set tabstop=4
@@ -87,5 +86,10 @@ set guifont=Bitstream_Vera_Sans_Mono:h12
 set hls
 set nobackup
 set nu
+
+filetype plugin indent on
+execute pathogen#infect()
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 set fileencodings=utf8,big5,gbk,latin1
