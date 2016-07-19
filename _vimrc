@@ -87,9 +87,12 @@ set hls
 set nobackup
 set nu
 
+" For NERDTree
 filetype plugin indent on
 execute pathogen#infect()
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+nnoremap <silent> <F5> :NERDTree<CR>
 
 set fileencodings=utf8,big5,gbk,latin1
