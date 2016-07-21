@@ -128,7 +128,11 @@ filetype plugin indent on    " required
 
 " For YouCompleteMe
 let g:ycm_global_ycm_extra_conf = 'C:\Program Files\Vim\vimfiles\bundle\YouCompleteMe\conf\cpp\.ycm_extra_conf.py'
+" Hot key map
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
+" automatically close preview window after leaving insert mode
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Personal setting
 set shiftwidth=4
