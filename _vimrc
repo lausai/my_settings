@@ -129,6 +129,7 @@ filetype plugin indent on    " required
 " For YouCompleteMe
 let g:ycm_global_ycm_extra_conf = 'C:\Program Files\Vim\vimfiles\bundle\YouCompleteMe\conf\cpp\.ycm_extra_conf.py'
 " Hot key map
+" Jump definition
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " automatically close preview window after leaving insert mode
@@ -151,4 +152,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 nnoremap <silent> <F5> :NERDTree<CR>
 
-set fileencodings=utf8,big5,gbk,latin1
+" Let gvim can read utf8 and big5
+set enc=utf-8
+set fileencodings=utf-8,cp950,gbk,latin1
+set nobomb
+
+" Reload menu with UTF-8 encoding to avoid garbled menu
+let $LANG="zh_TW.UTF-8"
+set langmenu=zh_tw.utf-8
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
