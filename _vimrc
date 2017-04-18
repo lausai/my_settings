@@ -135,6 +135,11 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 " automatically close preview window after leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" css auto complete
+let g:ycm_semantic_triggers = {
+   \   'css': [ 're!^\s{4}', 're!:\s+' ],
+   \ }
+
 " Personal setting
 set shiftwidth=4
 set tabstop=4
