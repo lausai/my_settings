@@ -157,6 +157,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 nnoremap <silent> <F5> :NERDTree<CR>
 
+"brackets auto close
+ino " ""<left>
+ino ' ''<left>
+ino ( ()<left>
+ino [ []<left>
+ino { {}<left>
+ino {<CR> {<CR>}<ESC>O
+
 " Let gvim can read utf8 and big5
 set enc=utf-8
 set fileencodings=utf-8,cp950,gbk,latin1
