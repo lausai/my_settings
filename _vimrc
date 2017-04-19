@@ -93,6 +93,15 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 
+" Add the html5 tag to vim omnicomplete tag list
+Plugin 'othree/html5.vim'
+
+" html tag auto close
+Plugin 'alvan/vim-closetag'
+
+" auto close brackets
+Plugin 'jiangmiao/auto-pairs'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -127,7 +136,7 @@ filetype plugin indent on    " required
 
 
 " For YouCompleteMe
-let g:ycm_global_ycm_extra_conf = 'C:\Program Files\Vim\vimfiles\bundle\YouCompleteMe\conf\cpp\.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = 'C:\Program Files (x86)\Vim\vimfiles\bundle\YouCompleteMe\conf\cpp\.ycm_extra_conf.py'
 " Hot key map
 " Jump definition
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
@@ -135,9 +144,10 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 " automatically close preview window after leaving insert mode
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" css auto complete
+" YCM auto complete for specific languages
 let g:ycm_semantic_triggers = {
-   \   'css': [ 're!^\s{4}', 're!:\s+' ],
+   \   'scss,sass,css': [ 're!^\s{4}', 're!:\s+' ],
+   \   'html': ['<', '"', '</', ' '],
    \ }
 
 " Personal setting
@@ -146,7 +156,7 @@ set tabstop=4
 set expandtab
 color torte
 set smartindent
-set guifont=Bitstream_Vera_Sans_Mono:h10
+set guifont=Bitstream_Vera_Sans_Mono:h12
 set hls
 set nobackup
 set nu
@@ -156,14 +166,6 @@ autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 nnoremap <silent> <F5> :NERDTree<CR>
-
-"brackets auto close
-ino " ""<left>
-ino ' ''<left>
-ino ( ()<left>
-ino [ []<left>
-ino { {}<left>
-ino {<CR> {<CR>}<ESC>O
 
 " Let gvim can read utf8 and big5
 set enc=utf-8
