@@ -178,3 +178,6 @@ set langmenu=zh_tw.utf-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
+" Change the working directory at the same time when you change the root of nerd tree
+let NERDTreeChDirMode=2
+
