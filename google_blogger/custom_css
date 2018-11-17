@@ -1,0 +1,161 @@
+.post-body {
+font: 16px/1.7em Microsoft JhengHei, Arial, TW-Kai, BiauKai, sans-serif;
+letter-spacing: .02em;
+text-align: justify;
+line-height: 1.5em;
+}
+
+.post-body h2 {
+margin-top: 0.3em;
+margin-bottom: 1.2em;
+}
+
+h3.post-title, .comments h4 {
+line-height: 1.5em;
+font: normal normal 26px "微軟正黑體","Microsoft JhengHei","Times New Roman",Times,serif;
+font-size: 1.8em;
+color: #cc6600
+}
+
+blockquote{
+    quotes:none;
+    margin:1.5em 0;
+    text-align:left;
+    font-size:16px;
+}
+blockquote a{
+    color:#34495f;
+}
+blockquote{
+    display:block;
+    border-left:6px solid #13529E;
+    border-radius:3px;
+    position:relative;
+    color:#5c5544;
+    background-color:#ffffff;
+    padding:20px 15px 20px 25px;
+    margin:.75em 0;
+}
+
+
+/*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+pre.prettyprint {
+  background: #1d1f21;
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  border: 0 !important;
+  font-size: 0.8em;
+  line-height: 1em;
+}
+
+pre .pln {
+  color: #c5c8c6;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #969896;
+}
+
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L4,
+li.L5,
+li.L6,
+li.L7,
+li.L8,
+li.L9 {
+  padding-left: 1em;
+  background-color: #1d1f21 !important;
+  list-style-type: decimal !important;
+}
+
+
+@media screen {
+
+  /* string content */
+
+  pre .str {
+    color: #b5bd68;
+  }
+
+  /* keyword */
+
+  pre .kwd {
+    color: #b294bb;
+  }
+
+  /* comment */
+
+  pre .com {
+    color: #969896;
+  }
+
+  /* type name */
+
+  pre .typ {
+    color: #81a2be;
+  }
+
+  /* literal value */
+
+  pre .lit {
+    color: #de935f;
+  }
+
+  /* punctuation */
+
+  pre .pun {
+    color: #c5c8c6;
+  }
+
+  /* lisp open bracket */
+
+  pre .opn {
+    color: #c5c8c6;
+  }
+
+  /* lisp close bracket */
+
+  pre .clo {
+    color: #c5c8c6;
+  }
+
+  /* markup tag name */
+
+  pre .tag {
+    color: #cc6666;
+  }
+
+  /* markup attribute name */
+
+  pre .atn {
+    color: #de935f;
+  }
+
+  /* markup attribute value */
+
+  pre .atv {
+    color: #8abeb7;
+  }
+
+  /* declaration */
+
+  pre .dec {
+    color: #de935f;
+  }
+
+  /* variable name */
+
+  pre .var {
+    color: #cc6666;
+  }
+
+  /* function name */
+
+  pre .fun {
+    color: #81a2be;
+  }
