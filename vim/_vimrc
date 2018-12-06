@@ -142,7 +142,7 @@ let g:ycm_global_ycm_extra_conf = 'C:\Program Files (x86)\Vim\vimfiles\bundle\Yo
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " automatically close preview window after leaving insert mode
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " YCM auto complete for specific languages
 let g:ycm_semantic_triggers = {
@@ -160,6 +160,7 @@ set guifont=Bitstream_Vera_Sans_Mono:h12
 set hls
 set nobackup
 set nu
+set noequalalways
 
 execute pathogen#infect()
 autocmd vimenter * NERDTree
