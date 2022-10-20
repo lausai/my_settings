@@ -1,43 +1,24 @@
-set nocompatible
+" Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
-" source $VIMRUNTIME/mswin.vim
-" behave mswin
 
-" set diffexpr=MyDiff()
-" function MyDiff()
-"   let opt = '-a --binary '
-"   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"   let arg1 = v:fname_in
-"   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"   let arg2 = v:fname_new
-"   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"   let arg3 = v:fname_out
-"   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"   let eq = ''
-"   if $VIMRUNTIME =~ ' '
-"     if &sh =~ '\<cmd'
-"       let cmd = '""' . $VIMRUNTIME . '\diff"'
-"       let eq = '"'
-"     else
-"       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"     endif
-"   else
-"     let cmd = $VIMRUNTIME . '\diff'
-"   endif
-"   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-" endfunction
-
+" Use the internal diff if available.
+" Otherwise use the special 'diffexpr' for Windows.
+if &diffopt !~# 'internal'
+  set diffexpr=MyDiff()
+endif
 function MyDiff()
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
   let arg1 = v:fname_in
   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
   let arg2 = v:fname_new
   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
   let arg3 = v:fname_out
   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
   if $VIMRUNTIME =~ ' '
     if &sh =~ '\<cmd'
       if empty(&shellxquote)
@@ -51,6 +32,7 @@ function MyDiff()
   else
     let cmd = $VIMRUNTIME . '\diff'
   endif
+  let cmd = substitute(cmd, '!', '\!', 'g')
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
   if exists('l:shxq_sav')
     let &shellxquote=l:shxq_sav
@@ -76,8 +58,6 @@ au InsertLeave * hi statusline guibg=green
 hi statusline guibg=green
 set laststatus=2
 
-
-
 " For Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -101,6 +81,9 @@ Plugin 'alvan/vim-closetag'
 
 " auto close brackets
 Plugin 'jiangmiao/auto-pairs'
+
+" nerdtree
+Plugin 'preservim/nerdtree'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -134,9 +117,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
 " For YouCompleteMe
-let g:ycm_global_ycm_extra_conf = 'C:\Program Files (x86)\Vim\vimfiles\bundle\YouCompleteMe\conf\cpp\.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = 'C:\Program Files (x86)\Vim\vimfiles\bundle\YouCompleteMe\third_party\ycmd\.ycm_extra_conf.py'
 " Hot key map
 " Jump definition
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
@@ -150,32 +132,47 @@ let g:ycm_semantic_triggers = {
    \   'html': ['<', '"', '</', ' '],
    \ }
 
-" Personal setting
+
 set shiftwidth=4
 set tabstop=4
 set expandtab
 color torte
 set smartindent
-set guifont=Bitstream_Vera_Sans_Mono:h12
+set guifont=Consolas:h11
 set hls
 set nobackup
 set nu
 set noequalalways
+set noundofile
+set encoding=utf-8
+set pythonthreedll=C:\Users\02569\AppData\Local\Programs\Python\Python36-32\python36.dll
+set tw=0
+set cursorline
+hi clear cursorline
+hi CursorLine gui=underline cterm=underline
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd BufNewFile,BufRead *.ejs set filetype=html
+" autocmd QuitPre * py3 ycm_state.OnVimLeave()
+autocmd VimLeave * call writefile([v:dying], 'D:\\vimtest')
+
+" stop vim set tw=78 for txt files
+au! vimrcEx FileType text
 
 if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 endif
 
-execute pathogen#infect()
+
 autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * nested if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 nnoremap <silent> <F5> :NERDTree<CR>
 
 " Let gvim can read utf8 and big5
 set enc=utf-8
-set fileencodings=utf-8,cp950,gbk,latin1
+set fileencodings=utf-8,gbk,cp950,latin1
 set nobomb
 
 " Reload menu with UTF-8 encoding to avoid garbled menu
@@ -186,4 +183,3 @@ source $VIMRUNTIME/menu.vim
 
 " Change the working directory at the same time when you change the root of nerd tree
 let NERDTreeChDirMode=2
-
