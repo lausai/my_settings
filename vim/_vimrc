@@ -147,7 +147,8 @@ set noundofile
 set encoding=utf-8
 set pythonthreedll=C:\Users\02569\AppData\Local\Programs\Python\Python36-32\python36.dll
 set tw=0
-
+" For gvim default scrolloff=5, disable it to let cursor can move to top and bottom
+set scrolloff=0
 " The following three line is for gvim current line highlight
 set cursorline
 hi clear cursorline
