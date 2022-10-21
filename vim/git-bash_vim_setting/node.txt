@@ -1,0 +1,3 @@
+The youcompleteme.vim is at ~/.vim/bundle/YouCompleteMe/autoload under git-bash
+
+The vimrc is at ~/.vim under git-bash
